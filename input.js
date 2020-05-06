@@ -17,7 +17,9 @@ const setUpInput = function(conn) {
     } else if (key === 's') {
       conn.write('Move: down');
     } else if (key === 'd') {
-      conn.write('Move: right')
+      conn.write('Move: right');
+    } else if (key === '1') {
+      conn.write("Say: you shall be destroyed");
     }
   }
   
