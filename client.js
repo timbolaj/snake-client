@@ -6,6 +6,14 @@ const connect = function () {
     port: 50541
   })
 
+  conn.on('connect', (connect) => {
+    console.log("You're connected fam");
+  })
+
+  conn.on('connect', () => {
+    conn.write(`Name: ABG`);
+  })
+
   conn.on('data', (data) => {
     console.log("You ded cuz you idled");
   })
