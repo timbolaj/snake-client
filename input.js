@@ -1,3 +1,4 @@
+const { MOVE_UP, MOVE_LEFT, MOVE_DOWN, MOVE_RIGHT, MESSAGES } = require('./constants');
 let connection;
 const setUpInput = function(conn) {
   connection = conn;
@@ -8,25 +9,23 @@ const setUpInput = function(conn) {
 
   const handleUserInput = key => {
     if (key === '\u0003') {
-      process.exit()
-    }
-    if (key === 'w') {
+      process.exit();
+    } else if (key === MOVE_UP) {
       conn.write('Move: up');
-    } else if (key === 'a') {
-      conn.write('Move: left')
-    } else if (key === 's') {
+    } else if (key === MOVE_LEFT) {
+      conn.write('Move: left');
+    } else if (key === MOVE_DOWN) {
       conn.write('Move: down');
-    } else if (key === 'd') {
+    } else if (key === MOVE_RIGHT) {
       conn.write('Move: right');
-    } else if (key === '1') {
-      conn.write("Say: you shall be destroyed");
+    } else if (MESSAGES[key]) {
+      conn.write(MESSAGES[key]);
     }
-  }
-  
+  };
   stdin.on('data', (data) => {
     handleUserInput(data);
-  }) 
+  });
   return stdin;
-}
+};
 
 module.exports = { setUpInput };
