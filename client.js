@@ -15,7 +15,7 @@ const connect = function () {
   })
 
   conn.on('data', (data) => {
-    console.log("You ded cuz you idled");
+    console.log("You have been terminated");
   })
 
   conn.setEncoding('utf8');
